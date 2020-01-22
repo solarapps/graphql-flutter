@@ -335,31 +335,12 @@ class FetchMoreOptions {
   FetchMoreOptions({
     @Deprecated('The "document" option has been deprecated, use "documentNode" instead')
         String document,
-    DocumentNode documentNode,
+    this.documentNode,
     this.variables = const <String, dynamic>{},
     @required this.updateQuery,
-  })  : assert(
-          // ignore: deprecated_member_use_from_same_package
-          _mutuallyExclusive(document, documentNode),
-          '"document" or "documentNode" options are mutually exclusive.',
-        ),
-        assert(updateQuery != null),
-        this.documentNode =
-            // ignore: deprecated_member_use_from_same_package
-            documentNode ?? document != null ? parseString(document) : null;
+  });
 
   DocumentNode documentNode;
-
-  /// A string representation of [documentNode]
-  @Deprecated(
-      'The "document" option has been deprecated, use "documentNode" instead')
-  String get document => printNode(documentNode);
-
-  @Deprecated(
-      'The "document" option has been deprecated, use "documentNode" instead')
-  set document(value) {
-    documentNode = parseString(value);
-  }
 
   final Map<String, dynamic> variables;
 
