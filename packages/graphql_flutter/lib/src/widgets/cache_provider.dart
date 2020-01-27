@@ -54,7 +54,6 @@ class _CacheProviderState extends State<CacheProvider>
       // When the app is 'cold-started', save won't be called and
       // restore will run ok.
       case AppLifecycleState.inactive:
-        client.cache?.save();
         break;
 
       case AppLifecycleState.paused:
